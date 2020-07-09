@@ -1,19 +1,5 @@
 # rubberhose-demo
 
-## Project setup
-```
-npm install
-```
+![](https://thumbs.gfycat.com/FearfulPalatableFeline-size_restricted.gif)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[Interactive Lottie demo for Battle Axe site](https://rubberhose-demo.netlify.app/)
