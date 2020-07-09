@@ -2,18 +2,27 @@
   <div id="app">
     <Wrapper>
       <div class="main-content">
-        <slottie :animation-data="animationData" :controllers="controllers" />
+        <slottie
+          :animation-data="animationData"
+          :controllers="controllerArray"
+          :draggables="draggables"
+        />
         <Grid style="width: fit-content" column>
-          <Input-Scroll label="Hose Length" v-model="length.value" :min="1" />
+          <Input-Scroll
+            label="Hose Length"
+            v-model="controllers.length.value"
+            :step="20"
+            :min="1"
+          />
           <Input-Scroll
             label="Bend Radius"
-            v-model="radius.value"
+            v-model="controllers.radius.value"
             :min="-200"
             :max="200"
           />
           <Input-Scroll
             label="Bend Direction"
-            v-model="direction.value"
+            v-model="controllers.direction.value"
             :min="-100"
             :max="100"
           />
@@ -30,18 +39,30 @@ import anim from "./assets/data.json";
 export default {
   name: "App",
   data: () => ({
-    length: {
-      name: "hoseLength",
-      value: 700,
+    controllers: {
+      length: {
+        name: "hoseLength",
+        value: 700,
+      },
+      direction: {
+        name: "bendDirection",
+        value: 100,
+      },
+      radius: {
+        name: "bendRadius",
+        value: 100,
+      },
     },
-    direction: {
-      name: "bendDirection",
-      value: 100,
-    },
-    radius: {
-      name: "bendRadius",
-      value: 100,
-    },
+    draggables: [
+      {
+        name: "#TestWrist",
+        selector: "#TestWrist",
+      },
+      {
+        name: "#TestShoulder",
+        selector: "#TestShoulder",
+      },
+    ],
   }),
   components: {
     slottie: require("@/components/slottie.vue").default,
@@ -54,10 +75,10 @@ export default {
     animationData() {
       return anim;
     },
-    controllers() {
+    controllerArray() {
       let temp = [];
-      Object.keys(this._data).forEach((key) => {
-        temp.push(this[key]);
+      Object.keys(this.controllers).forEach((key) => {
+        temp.push(this.controllers[key]);
       });
       return temp;
     },
