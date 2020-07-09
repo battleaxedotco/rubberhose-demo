@@ -1,86 +1,19 @@
 <template>
   <div id="app">
     <Wrapper>
-      <div class="main-content">
-        <slottie
-          :animation-data="animationData"
-          :controllers="controllerArray"
-          :draggables="['square', 'square 2']"
-        />
-        <Grid style="width: fit-content" column>
-          <Input-Scroll
-            label="Hose Length"
-            v-model="controllers.length.value"
-            :step="20"
-            :min="1"
-          />
-          <Input-Scroll
-            label="Bend Radius"
-            v-model="controllers.radius.value"
-            :min="-200"
-            :max="200"
-          />
-          <Input-Scroll
-            label="Bend Direction"
-            v-model="controllers.direction.value"
-            :min="-100"
-            :max="100"
-          />
-        </Grid>
-      </div>
+      <router-view />
     </Wrapper>
   </div>
 </template>
 
 <script>
-import anim from "./assets/dynamic.json";
+import anim from "./assets/plain.json";
 
 export default {
   name: "App",
-  data: () => ({
-    controllers: {
-      length: {
-        name: "hoseLength",
-        value: 700,
-      },
-      direction: {
-        name: "bendDirection",
-        value: 100,
-      },
-      radius: {
-        name: "bendRadius",
-        value: 100,
-      },
-    },
-    // draggables: [
-    //   {
-    //     name: "#TestWrist",
-    //     selector: "#TestWrist",
-    //   },
-    //   {
-    //     name: "#TestShoulder",
-    //     selector: "#TestShoulder",
-    //   },
-    // ],
-  }),
-  components: {
-    slottie: require("@/components/Rubberhose-Lottie").default,
-  },
+  data: () => ({}),
   mounted() {
-    require("starlette").default.initAs("AEFT", "gradient", "0");
-    // console.log(this.controllers);
-  },
-  computed: {
-    animationData() {
-      return anim;
-    },
-    controllerArray() {
-      let temp = [];
-      Object.keys(this.controllers).forEach((key) => {
-        temp.push(this.controllers[key]);
-      });
-      return temp;
-    },
+    require("starlette").default.initAs("ILST", "lightest");
   },
 };
 </script>
@@ -91,7 +24,8 @@ body,
 #app {
   width: 100vw;
   height: 100vh;
-  background-color: #262626;
+  overflow: auto;
+  /* background-color: #262626; */
 }
 
 .main-content {

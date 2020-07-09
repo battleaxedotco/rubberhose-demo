@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
+import router from "./router";
 
 Vue.config.productionTip = false;
 
@@ -63,5 +64,6 @@ Vue.component("Toggle", Toggle);
 Vue.component("Wrapper", Wrapper);
 
 new Vue({
+  router,
   render: (h) => h(App),
 }).$mount("#app");

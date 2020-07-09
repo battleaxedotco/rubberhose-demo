@@ -10,8 +10,10 @@
     "brutalism": "^2.0.3",
     "core-js": "^3.6.5",
     "lottie-web": "^5.5.9",
+    "rubberhose-lottie": "^1.0.3",
     "starlette": "^1.0.4",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
