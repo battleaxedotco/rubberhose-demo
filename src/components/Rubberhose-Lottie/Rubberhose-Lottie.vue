@@ -58,6 +58,7 @@ export default {
     animData: null,
     loop: true,
     autoplay: true,
+    override: false,
     control: [],
     mousePos: {
       x: 0,
@@ -86,7 +87,7 @@ export default {
   },
   watch: {
     stringMousePos(value) {
-      if (this.activeItem) {
+      if (this.activeItem && !this.override) {
         this.activeItem.position.x = this.mousePos.x;
         this.activeItem.position.y = this.mousePos.y;
       }
@@ -230,6 +231,10 @@ export default {
             layer.elt.addEventListener("mousedown", (evt) => {
               self.activeItem = layer;
             });
+            layer.elt.addEventListener('touchstart', (evt) => {
+              self.activeItem = layer;
+              self.override = true;
+            })
             this.animAPI.addValueCallback(
               this.animAPI.getKeyPath(`${layer.name},Transform,Position`),
               (currentVal) => {
@@ -240,6 +245,17 @@ export default {
         });
         window.addEventListener("mouseup", (evt) => {
           self.activeItem = null;
+        });
+        window.addEventListener("touchend", (evt) => {
+          console.log('TOUCHING OFF')
+          self.activeItem = null;
+        });
+        window.addEventListener("touchmove", (evt) => {
+          self.override = false;
+          let coords = evt.targetTouches[0];
+          let result = this.getCoordinatesRelativeToLottie(coords.clientX, coords.clientY);
+          self.mousePos.x = result.x;
+          self.mousePos.y = result.y;
         });
       });
     },
