@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import anim from "./assets/data.json";
 
 export default {
@@ -65,7 +64,7 @@ export default {
     ],
   }),
   components: {
-    slottie: require("@/components/slottie.vue").default,
+    slottie: require("@/components/Rubberhose-Lottie").default,
   },
   mounted() {
     require("starlette").default.initAs("AEFT", "gradient", "0");

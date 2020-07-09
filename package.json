@@ -9,7 +9,6 @@
   "dependencies": {
     "brutalism": "^2.0.3",
     "core-js": "^3.6.5",
-    "lottie-web": "^5.7.0",
     "starlette": "^1.0.4",
     "vue": "^2.6.11"
   },
