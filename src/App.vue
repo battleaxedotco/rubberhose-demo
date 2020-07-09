@@ -5,7 +5,7 @@
         <slottie
           :animation-data="animationData"
           :controllers="controllerArray"
-          :draggables="draggables"
+          :draggables="['square', 'square 2']"
         />
         <Grid style="width: fit-content" column>
           <Input-Scroll
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import anim from "./assets/data.json";
+import anim from "./assets/dynamic.json";
 
 export default {
   name: "App",
@@ -52,23 +52,23 @@ export default {
         value: 100,
       },
     },
-    draggables: [
-      {
-        name: "#TestWrist",
-        selector: "#TestWrist",
-      },
-      {
-        name: "#TestShoulder",
-        selector: "#TestShoulder",
-      },
-    ],
+    // draggables: [
+    //   {
+    //     name: "#TestWrist",
+    //     selector: "#TestWrist",
+    //   },
+    //   {
+    //     name: "#TestShoulder",
+    //     selector: "#TestShoulder",
+    //   },
+    // ],
   }),
   components: {
     slottie: require("@/components/Rubberhose-Lottie").default,
   },
   mounted() {
     require("starlette").default.initAs("AEFT", "gradient", "0");
-    console.log(this.controllers);
+    // console.log(this.controllers);
   },
   computed: {
     animationData() {
