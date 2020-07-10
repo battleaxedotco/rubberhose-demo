@@ -53,6 +53,8 @@ export default {
     Rubberhose: require("rubberhose-lottie").default,
   },
   computed: {
+    // The prop expects an Array, but I'd prefer to keep them as Objects
+    // in data above. So we just convert the parent data objects to an Array:
     controllerArray() {
       let temp = [];
       Object.keys(this.controllers).forEach((key) => {
