@@ -2,14 +2,21 @@
   <div class="center-page">
     <div class="about-content">
       <Rubberhose
+        v-if="!isViruses"
         :animation-data="realAnimation"
         :draggable="draggables"
         :hidden="realHiddens"
         :locked="locked"
         ref="rubberhose"
+        debug
       />
+      <Grid column v-else>
+        <Rubberhose :animation-data="virus1" />
+        <Rubberhose :animation-data="virus2" />
+        <Rubberhose :animation-data="virus3" />
+      </Grid>
     </div>
-    <Button label="reset" @click="resetContent" />
+    <Button v-if="!isViruses" label="reset" @click="resetContent" />
   </div>
 </template>
 
@@ -22,8 +29,15 @@ export default {
     mime: require("@/assets/mime.json"),
     mimeBlank: require("@/assets/mimeBlank.json"),
     joystick: require("@/assets/joystick.json"),
+    bernie: require("@/assets/bernie.json"),
+    virus1: require("@/assets/virus1.json"),
+    virus2: require("@/assets/virus2.json"),
+    virus3: require("@/assets/virus3.json"),
   }),
   computed: {
+    isViruses() {
+      return /virus/.test(this.$route.params.id);
+    },
     realAnimation() {
       let animation = this.$route.params.id;
       if (this[animation]) return this[animation];
@@ -31,6 +45,7 @@ export default {
     },
     draggables() {
       if (/mime/.test(this.$route.params.id)) return ["MasterControl"];
+      else if (/bernie/.test(this.$route.params.id)) return ["MASTER"];
       else return [];
     },
     realHiddens() {
@@ -41,6 +56,29 @@ export default {
           "RLeg 2::Hip",
           "LLeg 2::Hip",
           "RotationControl",
+        ];
+      else if (/bernie/.test(this.$route.params.id))
+        return [
+          "RThumb::Start",
+          "RThumb::End",
+          "RFinger1::Start",
+          "RFinger1::End",
+          "RFinger2::Start",
+          "RFinger2::End",
+          "RFinger3::Start",
+          "RFinger3::End",
+          "LThumb::Start",
+          "LThumb::End",
+          "LFinger1::Start",
+          "LFinger1::End",
+          "LFinger2::Start",
+          "LFinger2::End",
+          "LFinger3::Start",
+          "LFinger3::End",
+          "LArm::Shoulder",
+          "RArm::Shoulder",
+          "LLeg::Hip",
+          "RLeg::Hip",
         ];
       else return [];
     },
