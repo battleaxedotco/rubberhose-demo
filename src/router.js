@@ -21,5 +21,10 @@ export default new Router({
       name: "advanced",
       component: () => import("./views/Advanced.vue"),
     },
+    {
+      path: "/dropper",
+      name: "dropper",
+      component: () => import("./views/Dropper.vue"),
+    },
   ],
 });
