@@ -1,33 +1,35 @@
 <template>
   <div class="main-content">
-    <Rubberhose :controllers="controllerArray" :animation-data="animation" />
-    <div class="controls">
-      <div
-        class="control-range slider"
-        v-for="(controller, i) in realControls"
-        :key="i"
-      >
-        <Input-Scroll
-          style="font-size: 16px !important;"
-          :label="controller.realname"
-          v-model="controller.value"
-          :min="controller.options.min"
-          :max="controller.options.max"
-          flat
-        />
-        <vue-slider v-model="controller.value" v-bind="controller.options" />
-      </div>
-      <div class="control-range toggles">
-        <Toggle
-          label="Auto Rotate Start"
-          :state="controls.autoRotateStart.value"
-          v-model="controls.autoRotateStart.value"
-        />
-        <Toggle
-          label="Auto Rotate End"
-          :state="controls.autoRotateEnd.value"
-          v-model="controls.autoRotateEnd.value"
-        />
+    <div class="home-content">
+      <Rubberhose :controllers="controllerArray" :animation-data="animation" />
+      <div class="controls">
+        <div
+          class="control-range slider"
+          v-for="(controller, i) in realControls"
+          :key="i"
+        >
+          <Input-Scroll
+            style="font-size: 16px !important;"
+            :label="controller.realname"
+            v-model="controller.value"
+            :min="controller.options.min"
+            :max="controller.options.max"
+            flat
+          />
+          <vue-slider v-model="controller.value" v-bind="controller.options" />
+        </div>
+        <div class="control-range toggles">
+          <Toggle
+            label="Auto Rotate Start"
+            :state="controls.autoRotateStart.value"
+            v-model="controls.autoRotateStart.value"
+          />
+          <Toggle
+            label="Auto Rotate End"
+            :state="controls.autoRotateEnd.value"
+            v-model="controls.autoRotateEnd.value"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -160,6 +162,17 @@ export default {
 </script>
 
 <style>
+.main-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.home-content {
+  width: 800px;
+}
+
 .anim-main {
   fill: var(--color-default);
 }
