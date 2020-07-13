@@ -37,6 +37,8 @@ export default {
     virus1: require("@/assets/virus1.json"),
     virus2: require("@/assets/virus2.json"),
     virus3: require("@/assets/virus3.json"),
+    rubberhoseNest: require("@/assets/testRubberhose.json"),
+    rubberhoseBroken: require("@/assets/testRubberhoseBroken.json"),
   }),
   computed: {
     isViruses() {
