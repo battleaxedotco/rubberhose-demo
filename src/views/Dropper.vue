@@ -1,6 +1,9 @@
 <template>
   <div class="dropper-page">
     <div class="closeButton" v-if="currentAnimation">
+      <Button @click="$refs.lottie.checkValue()">
+        <Icon name="download" />
+      </Button>
       <Button @click="$refs.lottie.resetPositions()">
         <Icon name="refresh" />
       </Button>
