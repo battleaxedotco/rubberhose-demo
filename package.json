@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "brutalism": "^2.0.3",
+    "brutalism": "^2.0.6",
     "core-js": "^3.6.5",
     "lottie-api-updated": "^1.0.4",
     "lottie-web": "^5.5.9",
